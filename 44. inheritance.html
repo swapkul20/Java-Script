@@ -1,0 +1,40 @@
+<html>
+    <body>
+        <script>
+            class User
+            {
+                constructor(username,email)
+                {
+                    this.username=username;
+                    this.email=email;
+                }
+                login()
+                {
+                    console.log(`${this.username} logged in`);
+                }
+                logout()
+                {
+                    console.log(`${this.email} logged out`);
+                }
+            }
+            class Admin extends User
+            {
+                deleteUser(user)
+                {
+                    users=users.filter(u=>{
+                        return u.username!==user.username;
+                    });
+                }
+
+            }
+            const user1=new Admin("Swapnil","swap.kul20@gmail.com");
+            const user2=new Admin("Nilesh","nilesh@gmail.com");
+            const user3=new Admin("Prashant","p4prashant@gmail.com");
+            const user4=new Admin("Manoj","manoj@gmail.com");
+            const users=[user1,user2,user3,user4];
+            console.log(users);
+            user4.deleteUser(user2);
+            console.log(users);
+        </script>
+    </body>
+</html>

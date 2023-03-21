@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+           function customer(id,name){
+            console.log(this);
+            this.id=id;
+            this.name=name;
+            this.getDetails=function(){
+                return `ID:${this.id} belongs to ${this.name}`;
+            }
+           }
+           var customer1=new customer(1,"Swapnil");
+           console.log(customer1.getDetails());
+           console.log(customer1);
+        </script>
+    </body>
+</html>

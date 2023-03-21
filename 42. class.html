@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            class user
+            {
+                constructor(username,password)
+                {
+                    this.username=username;
+                    this.password=password;
+                }
+                login(){
+                    console.log(`${this.username} logged in`);
+                    return this;
+                }
+                logout()
+                {
+                    console.log(`${this.username} logged out`);
+                    return this;
+                }
+            
+            }
+            const user1=new user("Swapnil",'1234');
+            user1.login();
+            console.log(user1);
+            const user2=new user("Nilesh",'abcd');              
+            user2.login();
+            console.log(user2);
+            user1.logout();
+            user2.logout();
+            user1.login().logout();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            const getToDos=async()=>{
+                const response=await fetch("https://jsonplaceholder.typicoe.com/todos");
+                if(response.status!=200)
+                {
+                    throw new Error("can not get your data");
+                }
+                const data=await response.json();
+                return data; 
+            }
+            getToDos().then((data)=>{
+                console.log(data);
+            }).catch((error)=>{
+                console.log(error.message);
+            })
+            
+        </script>
+    </body>
+</html>

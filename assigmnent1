@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+        </style>
+    </head>
+</body>
+<div>
+    <textarea name="Type" class="type"></textarea>
+    <textarea name="Typing" class="typing"></textarea>
+</div>
+
+     <script></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            function outerFunction(outer)
+            {
+                const outervar="hello";
+                return function innerFunction(inner){
+                    console.log("Outer Variable:"+outer);
+                    console.log("Inner Variable:"+inner);
+                }
+            }
+            const myFunction=outerFunction("Outside");
+            myFunction("Inside");
+        </script>
+    </body>
+
+</html>

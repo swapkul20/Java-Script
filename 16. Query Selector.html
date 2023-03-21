@@ -1,0 +1,45 @@
+<HTML>
+<HEAD><TITLE>16. Query Selector </TITLE></HEAD>
+<BODY>
+<DIV>
+    <P>Hello world</P>
+    <P>JS Tutorial</P>
+    <P class="error">This is error</P>
+</DIV>
+<DIV class="error">This is another error
+    <H1 id="page-title">Java Script</H1>
+  
+</DIV>
+<a href="https://www.google.com">Search</a>
+<SCRIPT>
+const para=document.querySelector('P');
+console.log(para);
+console.log(para.innerText);
+para.innerText="Hello Javascript World";
+const para2=document.querySelector(".error");
+console.log(para2);
+para2.setAttribute("style","color:blue;");
+const paras=document.querySelectorAll('P');
+console.log(paras);
+paras.forEach(pa=>pa.innerText+="fun Fun Fun");
+const divpara=document.querySelector('div.error');
+console.log(divpara);
+console.log(divpara.innerHTML);
+divpara.innerHTML="<H3>Newly Added Players</H3><TABLE>";
+const players=['Sachin','Rahul','Saurav'];
+players.forEach(player=>{
+    divpara.innerHTML+=`<TR><TD>${player}</TD></TR>`;
+
+});
+divpara.innerHTML+="</TABLE>";
+
+const title=document.getElementById("page-title");
+console.log(title);
+const errors=document.getElementsByClassName("error")
+console.log(errors);
+const link=document.querySelector('a');
+console.log(link.getAttribute("href"));
+link.setAttribute('href',"https://wikipedia.com");
+</SCRIPT>
+</BODY>
+</HTML>

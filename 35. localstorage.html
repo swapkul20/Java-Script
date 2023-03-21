@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+          localStorage.setItem("name","jayesh");
+          localStorage.setItem("age",30);
+          let name=localStorage.getItem("name");
+          console.log(name);
+          let age=localStorage.getItem("age");
+          console.log(age);
+          localStorage.setItem(name,"ganesh");
+          localStorage.age=40;
+          console.log(localStorage.name);
+          console.log(localStorage.getItem(age));
+
+          const players=[
+            {name:"Sachin",topscore:200},
+            {name:"Rohit",topscore:263},
+            {name:"Virat",topscore:183}
+          ]
+            localStorage.setItem("Players",JSON.stringify(players));
+            const data=localStorage.getItem("players");
+            const playerdata=JSON.parse(data);
+            console.log(playerdata);
+
+        </script>
+    </body>
+</html>

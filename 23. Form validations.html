@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            form{
+                padding: 4px;
+                margin:auto
+            }
+            input{
+                display:block;
+                margin: 10px auto;
+                padding: 4px;
+            }
+            .success{
+                border:2px solid limegreen;
+            }
+            .error{
+                border:2px solid red;
+
+            }
+        </style>
+    </head>
+    <body>
+        <form class="signupform">
+        <input type="text" name="username"><BR>
+            <input type="submit">
+            
+            
+        </form>
+        <div class="feedback">
+        </div>
+       
+        <script>
+            const usernamepattern=/^[a-z A-Z]{6,10}$/;
+            const form=document.querySelector(".signupform");
+            const feedback=document.querySelector(".feedback");
+            form.addEventListener('submit',e=>{
+                e.preventDefault();
+                const username=form.username.value;
+                                               
+                if(usernamepattern.test(username))
+                {
+                   feedback.textContent="valid username";
+                }
+            });
+            form.username.addEventListener("keyup",e=>{
+                if(usernamepattern.test(e.target.value))
+                console.log("success");
+                else
+                console.log("failure");
+            });
+            form.username.addEventListener("keydown",e=>{
+                const username=form.username.value;
+                if(usernamepattern.test(username))
+                {
+                    form.username.setAttribute("class","success");
+                }
+                else
+                {
+                    form.username.setAttribute("class","error");
+                }
+            })
+        </script>
+    </body>
+</html>

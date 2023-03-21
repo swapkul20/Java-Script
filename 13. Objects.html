@@ -1,0 +1,38 @@
+<HTML>
+<HEAD><TITLE>13. Objects </TITLE></HEAD>
+<BODY>
+<SCRIPT>
+
+let user={
+    name:"Ravi",
+    age:30,
+    email:"ravi@gamil.com",
+    blogs:["Programming Basics","HTML Basics"],
+    location:"Mumbai",
+    login:function(){
+        console.log("Logged in");
+    },
+    logout:function(){
+        console.log("Logged out");
+    },
+    logBlogs:function(){
+        this.blogs.forEach(blog=>console.log(blog));
+    }
+
+};
+
+console.log(user);
+
+user.name="Ravish";
+
+console.log(user.name);
+console.log(user['email']);
+
+user.blogs.forEach(blog=>console.log(blog));
+
+user.login();
+user.logout();
+user.logBlogs();
+</SCRIPT>
+</BODY>
+</HTML>

@@ -1,0 +1,50 @@
+<HTML>
+<HEAD><TITLE>10. Functions </TITLE></HEAD>
+<BODY>
+<SCRIPT>
+function greet()
+{
+    console.log("HI");
+}
+greet();
+
+const fun=function() //function expression
+{
+    console.log("Have fun");
+}
+
+fun();
+
+const speak=function(name="swapnil",time="morning") // Default Parameters
+       {
+        console.log(`Good ${time} ${name}`);
+
+       }
+speak();
+speak("Nilesh");
+speak("Prashant","night");
+
+const area=function(radius)
+{
+    return 3.14*radius*radius;
+}
+console.log(area(10));
+
+//Arrow Functions
+let calcArea=(radius)=> 
+{
+    return 3.14*radius*radius;
+}
+console.log(calcArea(15));
+
+const bill=function(prodcts,tax)
+{
+    let total=0;
+    for(let i=0;i<prodcts.length;i++)
+       total+=prodcts[i]+prodcts[i]*tax;
+    return total;
+}
+console.log(bill([25,35,45],0.5));
+</SCRIPT>
+</BODY>
+</HTML>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            li{
+                list-style-type: none;
+                max-width: 200px;
+                padding: 8px;
+                margin: 8px auto;
+                background: #eee;
+                border:1px dotted #ddd;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Player List</h1>
+        <UL>
+            <LI> Sachin</LI>
+            <LI> Rahul</LI>
+            <LI> Virat</LI>
+            <LI> Rohit</LI>
+        </UL>
+        <button>Add New Player</button>
+        <script>
+            const button=document.querySelector("button");
+            button.addEventListener('click',()=>{console.log("You Clicked me");
+            const items=document.querySelectorAll("li");
+            items.forEach(item=>{item.addEventListener("click",()=>console.log(event.target));})
+            }
+            );
+            const items=document.querySelectorAll("li");
+            items.forEach(item=>{item.addEventListener("click",e=>{e.target.remove();});});
+
+            const ul=document.querySelector("ul");
+            const button2=document.querySelector("button");
+            button2.addEventListener("click",e=>{
+                const li=document.createElement("li");
+                li.textContent="New Player";
+                ul.append(li);
+            });
+           
+        </script>
+    </body>
+</html>

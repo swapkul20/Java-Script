@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <style>
+            .number{
+                padding:10px;
+                color:chocolate;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div class="number" align="center">
+        <P>
+            Number Guesser Game
+            
+        </P>
+
+
+    </div>
+    <div>
+        
+    </div>
+    <script>
+         const para1=document.querySelector("P");
+         let random=Math.round(Math.random()*100);
+         let guessnumber=parseInt(prompt("Guess a number:"));
+         if(guessnumber<random)
+         para1.innerHTML+=`<P>Too LOW</P><P>Rnadomly Generated Number was:${random}`;
+         if(guessnumber>random)
+         para1.innerHTML+=`<P>Too High</P><P>Rnadomly Generated Number was:${random}`;
+         if(guessnumber==random)
+         para1.innerHTML+=`<P>You Won</P><P>Rnadomly Generated Number was:${random}`;
+
+    </script> 
+    </body>
+</html>

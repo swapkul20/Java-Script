@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .maindiv{
+                background-color: skyblue;
+                padding:10px;
+                
+            }
+            .element{
+                width: 250px;
+                margin-bottom: 1cm;
+                
+            }
+            table{
+                padding:10px;
+                background-color: aquamarine;
+                border: 2px solid black;
+                align-content: center;
+
+            }
+            td,th{
+                width: 100px;
+                align-items: center;
+            }
+            tr{
+                border:1px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="maindiv">
+            
+            <H1><B>Shopping Cart</H1></B>
+            Select Product <select class="element" id="productname" >
+            </select><BR>
+            Unit Price <input type="number" id="unitprice" class="element"><BR>
+                Select Quantity<input type="number" id="quantity" class="element"><BR>
+                    <button id="add">Add to cart</button>
+       
+        </div>
+        <div class="shoppinglist">
+            <table><tr><th>Product Name</th><th>Product Quantity</th><th>Unit Price</th>
+                <th>Total Item Cost</th>
+        </div>
+        <div class="carttotal">
+        
+        </div>
+        <script>
+            items=[{itemname:"Biscuit",price:20},
+                   {itemname:"Chocolate",price:10},
+                   {itemname:"Cookie",price:30},
+            ]
+            var productList=document.querySelector("#productname");
+            generateShoppingList=function(){
+                
+                for(index in items)
+                {
+                    productList.options[productList.options.length]=new Option(items[index].itemname,index);
+                }
+            }
+            generateShoppingList();
+
+            var products=document.querySelectorAll("#productname");
+            var priceTxt=document.querySelector("#unitprice");
+           productList.addEventListener("change",()=>{
+                            
+                for(let i=0;i<items.length;i++)
+                {
+                    if((items[i].itemname)==productList.options[productList.selectedIndex].text)
+                    {
+                           priceTxt.value=items[i].price;
+                           break;
+                    }
+                }
+            })
+            var quantityTxt=document.querySelector("#quantity");
+            var total=0;
+            
+            addtoCart=function(event){
+                  var tablehtml='';
+                  var pname=document.querySelector("#productname");
+                  const productname=pname.options[pname.selectedIndex].text;
+                  const productprice=priceTxt.value;
+                  const productquantity=quantityTxt.value;
+                  var itemtotal=productprice*productquantity;
+                  total=total+itemtotal;
+                  const itemchart=document.querySelector("#itemchart");
+                  if(itemchart!=null)
+                  {
+                  
+                  }
+                  
+                  const cart=document.querySelector(".shoppinglist");
+                  html=`<table id="itemchart"><tr><td>${productname}</td><td><input type="number" id="quantityno" value=${productquantity}></td><td>${productprice}</td>
+                            <td>${itemtotal}</td></table>`;
+                  cart.innerHTML+=html;
+                  
+                  const carttotal=document.querySelector(".carttotal");
+                carttotal.innerHTML=`<table><tr><th>Total</th><th>${total}</th></tr></table>`;
+                 
+            }
+            
+            var mainDiv=document.querySelector(".maindiv");
+            mainDiv.addEventListener("click",()=>{
+                if(event.target.nodeName=="BUTTON")
+                    addtoCart(event);
+
+            })
+        
+            
+        
+       
+        </script>
+    </body>
+</html>

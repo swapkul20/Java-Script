@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            const scores=[10,30,15,25,40,28,90];
+            const filteredScores=scores.filter((score)=>{return score>30;});
+            console.log(filteredScores);
+
+            const users=[
+                {name:"Jay", premium:true},
+                {name:"Mahesh", premium:false},
+                {name:"Dhwani", premium:false},
+                {name:"Kanan", premium:true}
+            ];
+
+            const premiumusers=users.filter((user)=>{return user.premium});
+            console.log(premiumusers);
+
+        </script>
+    </body>
+</html>

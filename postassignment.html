@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            form{
+                background-color: skyblue;
+                padding: 10px;
+            }
+            .getdiv{
+                background-color: cyan;
+                padding: 10px;
+            }
+            .postdiv{
+                background-color:skyblue;
+                padding: 10px;
+            }
+            .size{width:250px;}
+            table{
+                background-color:darkgrey;
+                border: 1px solid;
+            }
+            td,th{width:125px;
+               border:1px solid;
+            }
+            tr{
+                border:1px solid;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div class="postdiv">
+        <form>
+            <h1>Post Request</h1>
+           <h5>Enter Roll Number:</h5>
+            <input type="number" id="rollnumber" name="rollNo" class="size"></input>
+            <h5>Enter Name:</h5>
+            <input type="text" id="name" name="name" class="size"></input>
+            <h5>Enter Age:</h5>
+            <input type="number" id="age" name="age" class="size"></input>
+            <h5>Enter Email:</h5>
+            <input type="email" id="email" name="email" class="size"></input><br><br>
+            <button type="submit">submit</button>
+        </form>
+        </div>
+        <div class="getdiv">
+            <table id="jsondata"></table>
+        </div>
+        <script>
+            sendDataToServer=async function(event){
+                event.preventDefault();
+               let studentdata;
+                const f=event.target;
+                const formdata=new FormData(f);
+                const data=Object.fromEntries(formdata);
+                console.log(JSON.stringify(data));
+               await fetch("http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students",{
+                    method:"POST", 
+                    body:  JSON.stringify(data),
+                    headers:{"Content-Type":"application/json"
+                    }
+                }).then((response)=>{
+                    console.log("Data sent successfully");
+                }).catch((error)=>{
+                    console.log("Error in sending data"+error);
+                })
+            }
+            const getdiv=document.querySelector(".getdiv");
+
+            deleteRecord=async function(target)
+            {
+                await fetch("http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students/"+target.value,
+                {
+                    method:"DELETE"
+                
+                }).then((response)=>{
+                                target.parentNode.parentNode.remove();
+                                console.log("Record deleted successfully");
+                            
+                        }).catch((error)=>{console.log(error)})
+                       
+            }
+            getDataFromServer=async function(){
+                
+                await fetch("http://gsmktg.azurewebsites.net:80/api/v1/techlabs/test/students")
+                         .then((response)=>{                    
+                                 return response.json();
+                }).then((data)=>{
+                     
+                     let studenttable=document.querySelector("#jsondata");
+                     studenthtml="<tr><th>Roll Number</th><th>Student Name</th><th>Age</th><th>Email id</th></tr>";
+                        data.forEach((student)=>
+                        {
+                           
+                            studenthtml+=`<tr><td>${student.rollNo}</td>
+                            <td>${student.name}</td><td>${student.age}</td><td>${student.email}</td>
+                            <td><button value="${student.id}">Delete</button></td>
+                            </tr>`;
+                        });
+                        studenthtml+=`</table>`;
+                       
+                        studenttable.innerHTML=studenthtml;
+                        studenttable.addEventListener("click",(e)=>
+                        {
+                            deleteRecord(e.target);
+                        }); 
+
+                    }).catch((error)=>{
+                    console.log("Unable to fetch");
+                })
+               
+            }
+            const form=document.querySelector("form");
+            form.addEventListener("submit",(event)=>{
+                
+                {
+                    sendDataToServer(event);
+                    getDataFromServer(event);
+                   
+                }
+            })
+        </script>
+    </body>
+</html>

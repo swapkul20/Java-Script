@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            
+        </style>
+    </head>
+</body>
+<div>
+    <textarea name="Type" class="type"></textarea><BR><BR>
+    <textarea name="Typing" class="typing"></textarea>
+</div>
+
+     <script>
+        const type=document.querySelector(".type");
+        const typing=document.querySelector(".typing");
+        let typedText="";
+        const iChars = /[`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+        type.addEventListener("keypress",(event)=>{
+           
+            const typedKey=event.key;
+            
+            if(isNaN(typedKey) && !iChars.test(typedKey))
+            {
+                typedText=typedText+typedKey;
+                typing.value=typedText;
+            }
+        })
+     </script>
+</body>
+</html>

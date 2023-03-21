@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            const prices=[20,10,25,30,40,80,60,65];
+            const salesprices=prices.map((price)=>{return price/2});
+            console.log(salesprices);
+
+            const products=[
+                {name:"Goodnight", price:300},
+                {name:"Magie", price:120},
+                {name:"India Gate Rice", price:1200},
+                {name:"Parle G", price:80}
+            ];
+             entries=Object.entries(products);
+             console.log(entries.next().value);
+
+            prouctswithdiscount=products.map((product)=>
+            {if(product.price>200) {
+            return {name:product.name,price:product.price-product.price*30/100}
+            }
+            else
+            return {product}});
+            console.log(prouctswithdiscount);
+            prouctswithdiscount.forEach((product)=>{console.log(product.name,product.price)});
+                     
+        </script>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .todo{
+                padding: 10px;
+                background-color: coral;
+                color: white;
+                margin-bottom: 1.5cm;
+                align-items: center;
+            }
+            .todolist
+            {
+                padding: 10px;
+                background-color:burlywood;
+                color:darkcyan;
+                margin-bottom: 1.5cm;   
+            }
+            .none
+            {
+              
+                background-color:white
+                 
+            }
+        </style>
+    </head>
+    <body>
+        <div class="maindiv">
+            <div class="todo">
+                Enter Your ToDos   <button class="add">Add ToDo</button>
+            </div>
+            <div class="todolist">
+
+            </div>
+        </div>
+        <script>
+
+            todos=["Reading a book","Listening music","Travelling"];
+            let i=0;
+            const doingDiv=document.querySelector(".todolist");
+            const mainDiv=document.querySelector(".maindiv");
+            const addBtn=document.querySelector(".add");
+            buttonClick=false;
+            let closeBtn;
+            
+            addToDo=function(){
+                buttonClick=true;            
+                if(i<todos.length)
+                  {    
+                       if(buttonClick==true)
+                       {
+                        doingDiv.innerHTML+=`<P>${todos[i]} <button class="close">
+                                            <img src="close.ico" width=20 height=20></button>
+                                            </P>`;
+                                        
+                        buttonClick=false;
+                        i++;
+                        console.log(i);
+                        }
+                   }
+                   if(i==todos.length)
+                      i=0;
+
+              
+            }
+    
+           doingDiv.addEventListener("click",()=>{
+            console.log(event.target);
+            event.target.parentNode.parentNode.remove();
+           })
+
+            
+            
+            addBtn.addEventListener("click",()=>
+            {
+                 addToDo();
+                   
+                
+            });
+            
+           
+        </script>
+
+</html>

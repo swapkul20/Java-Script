@@ -1,0 +1,39 @@
+<HTML>
+<HEAD>
+    <STYLE>
+        .error{
+            padding:10px;
+            color:red;
+            border:1px dotted red;
+        }
+        .success{
+             padding:10px;
+             color:limegreen;
+             border:1px dotted limegreen
+        }
+
+    </STYLE>
+</HEAD>
+<BODY>
+    <H1> Removing and adding classes</H1>
+    <P class="error">lorcm cpsum</P>
+    <P>lorcm error ipsum</P>
+    <P>lorcm success ipsum</P>
+    <P>error lorcm ipsum</P>
+    <P>success lorcm ipsum</P>
+    <P>lorcm ipsum lorsum</P>
+    <H1 class="title">Toggle</H1>
+    <SCRIPT>
+        const content=document.querySelector('P');
+        content.classList.add("success");
+        const paras=document.querySelectorAll('P');
+        paras.forEach(para=>{
+            if(para.textContent.includes("error"))
+            para.classList.add("error");
+            if(para.textContent.includes("success"))
+            para.classList.add("success");
+
+        });
+    </SCRIPT>
+</BODY>
+</HTML>

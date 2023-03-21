@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <style>
+            .background{
+                padding:10px;
+                color:chocolate;
+                       }
+            .inner{
+                padding:20px;
+                color:skyblue;
+                align-content: center;
+                
+            }
+        </style>
+    </head>
+    <BODY>
+        <FORM class="background" name="Test">
+            <Input type="button" value="Click me" onclick="display()"
+        </FORM>
+        <script>
+            function display()
+            {
+                let content=document.querySelector("body");
+                content.innerHTML+="<P class='inner'><H1>Good Evening</H1></P>";
+            }
+        </script>
+    </BODY>

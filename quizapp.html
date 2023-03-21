@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+        <style>
+            .questiondiv{
+                background-color:skyblue;
+                color: darkgreen;
+                padding: 10px;
+                border: 1px solid black;
+            }
+            .answerdiv{
+                background-color: darkkhaki;
+                color: white;
+                padding:10px;
+                border:1px solid blue;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <div class="questiondiv">
+              
+            </div>
+            <div class="answerdiv">
+                <script>
+                    const questionanswers=[
+                      { question:"What is capital of India?", answers:["Mumbai","Delhi","Banglore","Chennai"],correct:"Delhi"},
+                        {question:"Who is prime minister of India?",answers:["Narendra Modi","Nitin Gadkari","Arun Jetly","Sushma Swaraj"],correct:"Narendra Modi"},
+                        {question:"How many districts ate there in Maharashtra?",answers:[32,35,36,39],correct:36}
+                     ]
+                     
+                     const questionDiv=document.querySelector('.questiondiv');
+                     console.log(questionDiv);
+                     const answerDiv=document.querySelector('.answerdiv');
+                     let click=0;
+                     let i=1;
+                     answerShown=true;
+                      generateScreen= function(qa){
+                          
+                             
+                             questionDiv.innerHTML=`<P>${qa.question}</P>`;
+                             answerDiv.innerHTML=`<P><UL type="none">
+                                                  <LI><input type="radio">${qa.answers[0]}</LI>
+                                                  <LI><input type="radio">${qa.answers[1]}</LI>
+                                                  <LI><input type="radio">${qa.answers[2]}</LI>
+                                                  <LI><input type="radio">${qa.answers[3]}</LI>
+                                                  </UL></P>`;
+                             answerDiv.innerHTML+=`<button id="next">Next</button><P>`;
+                           
+                             nxtBtn=document.querySelector("#next");
+                             nxtBtn.addEventListener("click",(event)=>{
+                                showAnswer(event,qa.correct);
+                             
+                                
+                             
+                            click=true;
+                            
+                             startGame(questionanswers);
+                        
+                        })
+                    
+                     }  
+                    
+                     showAnswer=function(event,answer){
+                        answerDiv.innerHTML+=`<P>${answer}</P`;
+                            answerShown=true;
+                     }
+
+
+                     startGame= function(questionanswers)
+                     {
+                            
+                            if(click==false)
+                               generateScreen(questionanswers[0]);
+                            else if(i<questionanswers.length)
+                            {
+                               
+                                generateScreen(questionanswers[i++]);
+                            }
+                    }
+                startGame(questionanswers);
+                
+                    </script>
+          
+            </div>
+        </div>
+       
+    </body>
+</html>

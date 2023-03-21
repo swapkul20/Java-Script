@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <script>
+            const scores=[20,30,40,18,7,28,60];
+            const result=scores.reduce((acc,score)=>{
+                if(score>=30)
+                   acc++;
+                return acc;
+            },0);
+            console.log(result);
+
+            const players=[
+                {name:"Sachin",score:200},
+                {name:"Virendra",score:219},
+                {name:"Rohit",score:209},
+                {name:"Rohit",score:273}
+            ];
+            highscore=players.reduce((acc,player)=>{
+                if(player.name=="Rohit")
+                     acc+=player.score;
+                return acc;
+            },0);
+            console.log(highscore);
+        </script>
+    </body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            .maindiv{
+                background-color: skyblue;
+                padding:10px;
+                
+            }
+            .element{
+                width: 250px;
+                margin-bottom: 1cm;
+                
+            }
+            table{
+                padding:10px;
+                background-color: aquamarine;
+                border: 2px solid black;
+                align-content: center;
+
+            }
+            td,th{
+                width: 100px;
+                align-items: center;
+            }
+            tr{
+                border:1px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="maindiv">
+            
+            <H1><B>Shopping Cart</H1></B>
+            Select Product <select class="element" id="productname" >
+            </select><BR>
+            Unit Price <input type="number" id="unitprice" class="element"><BR>
+                Select Quantity<input type="number" id="quantity" class="element"><BR>
+                    <button id="add">Add to cart</button>
+       
+        </div>
+        <div class="shoppinglist">
+            <table><tr><th>Product Name</th><th>Product Quantity</th><th>Unit Price</th>
+                <th>Total Item Cost</th></tr></table>
+            <table id="itemchart"><tr><td></td><td></td><td></td><td id="itemtotal"></td></table>
+        </div>
+        <div class="carttotal">
+        
+        </div>
+        <script>
+            items=[{itemname:"Biscuit",price:20},
+                   {itemname:"Chocolate",price:10},
+                   {itemname:"Cookie",price:30},
+            ]
+
+            class MyProduct
+            {
+                constructor(pname,pprice,pquantity)
+                {
+                    this.pname=pname;
+                    this.pprice=pprice;
+                    this.pquantity=pquantity;
+                    
+                }
+                getPrice=function()
+                {
+                    return this.pprice;
+                }
+                getName=function()
+                {
+                    return this.pname;
+                }
+                getQuantity=function()
+                {
+                    return this.pquantity;
+                }
+                
+              
+            }
+            var productList=document.querySelector("#productname");
+            generateShoppingList=function(){
+                
+                for(index in items)
+                {
+                    productList.options[productList.options.length]=new Option(items[index].itemname,index);
+                }
+            }
+            generateShoppingList();
+
+            var products=document.querySelectorAll("#productname");
+            var priceTxt=document.querySelector("#unitprice");
+           productList.addEventListener("change",()=>{
+                            
+                for(let i=0;i<items.length;i++)
+                {
+                    if((items[i].itemname)==productList.options[productList.selectedIndex].text)
+                    {
+                           priceTxt.value=items[i].price;
+                           break;
+                    }
+                }
+            })
+            var quantityTxt=document.querySelector("#quantity");
+            var total=0;
+            var rows=0;
+            let ProductList=[];
+            addtoCart=function(event,newproduct){
+                  var tablehtml='';
+                  
+                  var cart=document.querySelector("#itemchart");
+                  console.log(cart);
+                  
+                  
+                  var row=cart.insertRow(rows);
+                  row.insertCell(0).innerHTML=newproduct.getName();
+                  row.insertCell(1).innerHTML=`<input type="number" id="quantityno" value=${newproduct.getQuantity()}>`;
+                  row.insertCell(2).innerHTML=newproduct.getPrice();
+                  var itemtotal=prod.getPrice()*newproduct.getQuantity();
+                  itemtotalcell=row.insertCell(3);
+                  itemtotalcell.innerHTML=itemtotal;
+                  
+                   rows++;
+
+                   displayTotal=function(x){
+                  total=total+x;                    
+                  const carttotal=document.querySelector(".carttotal");
+                carttotal.innerHTML=`<table><tr><th>Total</th><th>${total}</th></tr></table>`;
+                 }
+                
+                 displayTotal(itemtotal);
+                  const qunatitychange=document.querySelector("#quantityno");
+                  qunatitychange.addEventListener("change",()=>{
+                    var change=qunatitychange.value;
+                    itemtotal=newproduct.getPrice()*change
+                    itemtotalcell.innerHTML=itemtotal;
+                    displayTotal(itemtotal);
+                  })
+                
+                  
+
+            }
+            
+            createProduct=function(event)
+            {
+                var pname=document.querySelector("#productname");
+                  const productname=pname.options[pname.selectedIndex].text;
+                  const productprice=priceTxt.value;
+                  const productquantity=quantityTxt.value;
+                  prod=new MyProduct(productname,productprice,productquantity);
+                  return prod;
+            }
+            var mainDiv=document.querySelector(".maindiv");
+            index=0;
+            
+            mainDiv.addEventListener("click",()=>{
+           
+            if(event.target.nodeName=="BUTTON")
+                {
+                    prod=createProduct();
+                    addtoCart(event,prod);
+                    ProductList.push(prod);
+                    
+                    
+                }
+      
+            })
+        
+            
+        
+       
+        </script>
+    </body>
+</html>

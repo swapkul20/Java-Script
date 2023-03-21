@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <style>
+            .background{
+                padding:10px;
+                color:chocolate;
+                       }
+            .inner{
+                padding:20px;
+                color:skyblue;
+                align-content: center;
+                
+            }
+        </style>
+    </head>
+    <BODY>
+        <form name="editor">
+            <input type="text" size="200" onkeydown="validate()" name="texteditor" id="text1">
+        </form>
+        <script>
+            function validate()
+            {
+                let content;
+                let key=event.key;
+                
+                var iChars = "!`@#$%^&*()+=-[]\\\';,./{}|\":<>?~_"; 
+                
+
+                if(!isNaN(key) || iChars.includes(key))
+                {
+                    content=document.getElementById("text1");
+                    let message=content.value;
+                    event.target.value=message.replace(key,'');
+                    
+                }
+
+               
+                
+
+            }
+
+
+        </script>

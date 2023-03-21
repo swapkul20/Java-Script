@@ -1,0 +1,16 @@
+<HTML>
+<HEAD><TITLE>11. Callback Functions </TITLE></HEAD>
+<BODY>
+<SCRIPT>
+const addition=(a,b,calback)=>
+{
+    c=a+b;
+    calback(c);
+}
+const display=(result)=>console.log(result)
+
+addition(10,20,display);
+
+</SCRIPT>
+</BODY>
+</HTML>
